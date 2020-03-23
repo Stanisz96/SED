@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5830ba8-d532-4ea0-90ce-764b57355366" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +33,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main (1)">
     <configuration name="lines3d_demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SED" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -48,6 +47,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../lines3d_demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SED" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab_02" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_02/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -121,6 +141,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.surface3d_demo" />
         <item itemvalue="Python.lines3d_demo" />
@@ -153,5 +174,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1578" height="217" key="GridCell.Tab.0.bottom" timestamp="1584999250722">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1584999250722" />
+    <state width="1578" height="217" key="GridCell.Tab.0.center" timestamp="1584999250721">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="217" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1584999250721" />
+    <state width="1578" height="217" key="GridCell.Tab.0.left" timestamp="1584999250721">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="217" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1584999250721" />
+    <state width="1578" height="217" key="GridCell.Tab.0.right" timestamp="1584999250722">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1578" height="217" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1584999250722" />
   </component>
 </project>
