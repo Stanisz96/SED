@@ -107,7 +107,7 @@ print(C)
 ```
 * `divide()` − divide elements of two matrices.
 
-_Example 3.2. Divide elements of two matrices_
+_Example 3.3. Divide elements of two matrices_
 ```
 C = np.divide(A,B)
 print(C)
@@ -116,7 +116,7 @@ print(C)
 ```
 * `multiply()` − multiply elements of two matrices.
 
-_Example 3.2. Multiply elements of two matrices_
+_Example 3.4. Multiply elements of two matrices_
 ```
 C = np.multiply(A,B)
 print(C)
@@ -125,7 +125,7 @@ print(C)
 ```
 * `dot()` − It performs matrix multiplication, does not element wise multiplication.
 
-_Example 3.2. Multiplication two matrices_
+_Example 3.5. Multiplication two matrices_
 ```
 C = np.dot(A,B)
 print(C)
@@ -133,7 +133,7 @@ print(C)
    [4 4]]
 ```
 * `sqrt()` − square root of each element of matrix.
-_Example 3.2. square root of each element of matrix_
+_Example 3.6. square root of each element of matrix_
 ```
 C = np.array([[4,4],[4,4]])
 print(np.sqrt(C))
@@ -142,7 +142,7 @@ print(np.sqrt(C))
 ```
 * `sum(x,axis)` − add to all the elements in matrix. Second argument is optional, it is used when we want to compute the column sum if axis is 0 and row sum if axis is 1.
 
-_Example 3.2. Add all elements of matrix_
+_Example 3.7. Add all elements of matrix_
 ```
 C = np.array([[1,2],[3,4]])
 print(np.sum(C))
@@ -150,7 +150,7 @@ print(np.sum(C))
 ```
 * `“.T”` − It performs transpose of the specified matrix.
 
-_Example 3.2. Transpose matrix_
+_Example 3.8. Transpose matrix_
 ```
 C = np.array([[1,4],[2,5],[3,6]])
 print(C)
