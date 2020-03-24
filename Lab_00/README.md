@@ -361,7 +361,7 @@ for x in axes:
 
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/fig01.png" height="100%" width="100%" />
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/fig01.png" height="90%" width="90%" />
 
 <br></br>
 
@@ -381,7 +381,7 @@ plt.grid(True)
 plt.legend(["Original data","Fitted line"])
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot03.png" height="100%" width="100%" />
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot03.png" height="60%" width="60%" />
 
 <br></br>
 
