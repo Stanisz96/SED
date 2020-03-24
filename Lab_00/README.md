@@ -166,7 +166,7 @@ print(C.T)
 ### _for_ Statement
 The for statement in python can be done in various way. Below, You can see some of its examples.
 
-_Example 4.1. **for** Statement using elements of array_
+_Example 4.1. for Statement using elements of array_
 ```
 a = ['jeden, ','dwa, ','trzy']
 str = ''
@@ -175,7 +175,7 @@ for element in a:
 print(str)
 > jeden, dwa, trzy
 ```
-_Example 4.2. **for** Statement using elements of two-dimensional array_
+_Example 4.2. for Statement using elements of two-dimensional array_
 ```
 a = [[1,4],[2,5],[3,6]]
 for x, y in a:
@@ -184,7 +184,7 @@ for x, y in a:
   x: 2, y: 5
   x: 3, y: 6
 ```
-_Example 4.3. **for** Statement using `range()`_
+_Example 4.3. for Statement using `range()`_
 ```
 for x in range(0,10,3):
     print(x)
@@ -197,7 +197,7 @@ for x in range(0,10,3):
 ### _while_ Statement
 `While` can be used when we want to loop what is in _while_ statement - depend of variable boolean value or condition.
 
-_Example 4.4. **while** Statement_
+_Example 4.4. while Statement_
 ```
 x = 1
 while x<4:
@@ -209,7 +209,7 @@ while x<4:
 ```
 ### _if, else_ Statement
 `if` and `else` statement is used to check whether a given condition is met or not.
-_Example 4.5. **if,else** Statement_
+_Example 4.5. if,else Statement_
 ```
 x = 1
 if(x == 2):
