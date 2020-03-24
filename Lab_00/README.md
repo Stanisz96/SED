@@ -270,26 +270,100 @@ x = np.arange(1,11)
 plt.plot(x,x**2)
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot01.png" height="50%" width="50%" />
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot01.png" height="60%" width="60%" />
 
 <br></br>
 
 _Example 6.2. Create simple plot with some properties_
 ```
 x = np.arange(1,11)
-plt.plot(x,x**2,'.',color="#008ae6", markersize=15)
+plt.plot(x,x**2,'.',color="#2eb82e", markersize=15)
 plt.xlabel(r'$x$',size="x-large")
 plt.ylabel(r'$f(x)=x^2$',size="x-large")
 plt.title("Function f(x)",size="xx-large")
 plt.grid(True)
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot02.png" height="50%" width="50%" />
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot02.png" height="60%" width="60%" />
 
 <br></br>
 
+### Histograms
+To create histogram data, we can MatPlotLib function `hist()`.
 
+_Example 6.3. Create simple histogram_
+```
+x = np.array([1,1,1,2,2,4,10])
+plt.hist(x,bins=5)
+plt.ylabel("Frequency")
+plt.xlabel("x")
+plt.title("Histogram of x")
+plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/hist01.png" height="60%" width="60%" />
 
+<br></br>
+
+_Example 6.4. Create histogram with data from normal distribution_
+```
+x = np.random.normal(0,0.1,1000)
+# plt.hist(x,bins=20,color="#2eb82e",edgecolor="black")
+# plt.ylabel("Frequency")
+# plt.xlabel("x")
+# plt.title("Histogram of x")
+# plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/hist02.png" height="60%" width="60%" />
+
+<br></br>
+
+## 7. Value draw
+
+### Function `permutation()`
+Randomly permute a sequence, or return a permuted range<sup> _[[7]]_</sup>&nbsp;.
+
+_Example 7.1. Permutation function_
+```
+x = np.arange(9)
+print(x)
+> [0 1 2 3 4 5 6 7 8]
+y = np.random.permutation(x)
+print(y)
+> [5 8 1 3 0 7 2 4 6]
+```
+
+_Example 7.2. Plots for distributions: _
+```
+laplace = np.random.laplace(4,1,4000)
+normal = np.random.normal(4,0.2,4000)
+poisson = np.random.poisson(4,4000)
+gamma = np.random.gamma(2,2,4000)
+
+figure, axes = plt.subplots(2,2)
+figure.tight_layout(pad=3.0)
+
+axes[0,0].hist(laplace,bins=15,color="#2eb82e",edgecolor="black")
+axes[0,0].set_title("Laplace distribution",size="large")
+
+axes[0,1].hist(normal,bins=15,color="#00a3cc",edgecolor="black")
+axes[0,1].set_title("Normal distribution",size="large")
+
+axes[1,0].hist(poisson,bins=15,color="#e65c00",edgecolor="black")
+axes[1,0].set_title("Poisson distribution",size="large")
+
+axes[1,1].hist(gamma,bins=15,color="#86b300",edgecolor="black")
+axes[1,1].set_title("Gamma distribution",size="large")
+
+for x in axes:
+    for y in x:
+        y.set_xlabel(r'$x$', size="large")
+        y.set_ylabel("Frequency", size="large")
+
+plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/fig01.png" height="100%" width="100%" />
+
+<br></br>
 
 
 [1]: https://www.tutorialsteacher.com/python/python-data-types
@@ -298,3 +372,4 @@ plt.show()
 [4]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.matrix.html
 [5]: https://www.tutorialspoint.com/matrix-manipulation-in-python
 [6]: https://www.w3schools.com/python/python_functions.asp
+[7]: https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html

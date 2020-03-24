@@ -110,12 +110,64 @@ def fun(*args):
 ## Plots
 
 # x = np.arange(1,11)
-# plt.plot(x,x**2,'.',color="#008ae6", markersize=15)
+# plt.plot(x,x**2,'.',color="#2eb82e", markersize=15)
 # plt.xlabel(r'$x$',size="x-large")
 # plt.ylabel(r'$f(x)=x^2$',size="x-large")
 # plt.title("Function f(x)",size="xx-large")
 # plt.grid(True)
-# plt.savefig("plot02.png")
+# # plt.savefig("plot02.png")
 # plt.show()
 
+# hist
 
+# x = np.array([1,1,1,2,2,4,10])
+# plt.hist(x,bins=5)
+# plt.ylabel("Frequency")
+# plt.xlabel("x")
+# plt.title("Histogram of x")
+# plt.show()
+
+#histogram with normal distribution
+
+# x = np.random.normal(0,0.1,1000)
+# plt.hist(x,bins=20,color="#2eb82e",edgecolor="black")
+# plt.ylabel("Frequency")
+# plt.xlabel("x")
+# plt.title("Histogram of x")
+# plt.savefig("hist02.png")
+# plt.show()
+
+# permutation
+# x = np.arange(9)
+# print(x)
+# y = np.random.permutation(x)
+# print(y)
+
+# distribution
+laplace = np.random.laplace(4,1,4000)
+normal = np.random.normal(4,0.2,4000)
+poisson = np.random.poisson(4,4000)
+gamma = np.random.gamma(2,2,4000)
+
+figure, axes = plt.subplots(2,2)
+figure.tight_layout(pad=3.0)
+
+axes[0,0].hist(laplace,bins=15,color="#2eb82e",edgecolor="black")
+axes[0,0].set_title("Laplace distribution",size="large")
+
+axes[0,1].hist(normal,bins=15,color="#00a3cc",edgecolor="black")
+axes[0,1].set_title("Normal distribution",size="large")
+
+axes[1,0].hist(poisson,bins=15,color="#e65c00",edgecolor="black")
+axes[1,0].set_title("Poisson distribution",size="large")
+
+axes[1,1].hist(gamma,bins=15,color="#86b300",edgecolor="black")
+axes[1,1].set_title("Gamma distribution",size="large")
+
+for x in axes:
+    for y in x:
+        y.set_xlabel(r'$x$', size="large")
+        y.set_ylabel("Frequency", size="large")
+
+plt.show()
+# plt.savefig("fig01.png")
