@@ -262,8 +262,15 @@ say()
 ## 6. Creating data visualisation
 For creating plots, graphs, charts etc. - the best option is to use library `matplotlib`.
 ### Plots
+For 2 dimensional plots You can import : `matplotlib.pyplot`
 
-
+_Example 6.1. Create simple plot_
+```
+x = np.arange(1,11)
+plt.plot(x,x**2)
+plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot01.png" height="50%" width="50%">
 
 [1]: https://www.tutorialsteacher.com/python/python-data-types
 [2]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html?highlight=series#pandas.Series

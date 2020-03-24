@@ -111,5 +111,5 @@ def fun(*args):
 
 x = np.arange(1,11)
 plt.plot(x,x**2)
-plt.show()
 plt.savefig("plot01.png")
+plt.show()
