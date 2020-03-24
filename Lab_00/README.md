@@ -77,7 +77,93 @@ print(bf.A.value_counts().b)
 print(bf.B.value_counts().e)
 > 2
 ```
+## 3. Operations on Matrix
+Matrix can be created using function `matrix()` in  NumPy, but is recommended to use regular arrays for matrices<sup> _[[4]]_</sup>. We can use NumPy functions for matrix manipulations<sup> _[[5]]_</sup>&nbsp;:
+* `add()` − add elements of two matrices.
+
+_Example 3.1. Add two matrices_
+```
+A = np.array([[1,1],[1,1]])
+print(A)
+> [[1 1]
+   [1 1]]
+B = np.array([[2,2],[2,2]])
+print(B)
+> [[2 2]
+   [2 2]]
+C = np.add(A,B)
+print(C)
+> [[3 3]
+   [3 3]]
+```
+* `subtract()` − subtract elements of two matrices.
+
+_Example 3.2. Subtract two matrices_
+```
+C = np.subtract(A,B)
+print(C)
+> [[-1 -1]
+   [-1 -1]]
+```
+* `divide()` − divide elements of two matrices.
+
+_Example 3.2. Divide elements of two matrices_
+```
+C = np.divide(A,B)
+print(C)
+> [[0.5 0.5]
+   [0.5 0.5]]
+```
+* `multiply()` − multiply elements of two matrices.
+
+_Example 3.2. Multiply elements of two matrices_
+```
+C = np.multiply(A,B)
+print(C)
+> [[2 2]
+   [2 2]]
+```
+* `dot()` − It performs matrix multiplication, does not element wise multiplication.
+
+_Example 3.2. Multiplication two matrices_
+```
+C = np.dot(A,B)
+print(C)
+> [[4 4]
+   [4 4]]
+```
+* `sqrt()` − square root of each element of matrix.
+_Example 3.2. square root of each element of matrix_
+```
+C = np.array([[4,4],[4,4]])
+print(np.sqrt(C))
+> [[2. 2.]
+   [2. 2.]]
+```
+* `sum(x,axis)` − add to all the elements in matrix. Second argument is optional, it is used when we want to compute the column sum if axis is 0 and row sum if axis is 1.
+
+_Example 3.2. Add all elements of matrix_
+```
+C = np.array([[1,2],[3,4]])
+print(np.sum(C))
+> 10
+```
+* `“.T”` − It performs transpose of the specified matrix.
+
+_Example 3.2. Transpose matrix_
+```
+C = np.array([[1,4],[2,5],[3,6]])
+print(C)
+> [[1 4]
+   [2 5]
+   [3 6]]
+print(C.T)
+> [[1 2 3]
+   [4 5 6]]
+```
 
 [1]: https://www.tutorialsteacher.com/python/python-data-types
 [2]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html?highlight=series#pandas.Series
 [3]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame
+[4]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.matrix.html
+[5]: https://www.tutorialspoint.com/matrix-manipulation-in-python
