@@ -1,5 +1,8 @@
 import numpy as np
 import pandas as pd
+import math
+# from hello import say
+import matplotlib.pyplot as plt
 
 # 2. Data structure
 ## Vector
@@ -56,6 +59,57 @@ C = np.array([[1,2],[3,4]])
 
 ## Transpose
 C = np.array([[1,4],[2,5],[3,6]])
-print(C)
-print(C.T)
 # print(C)
+# print(C.T)
+
+# 4. Control flow
+## For Statement
+a = ['jeden, ','dwa, ','trzy']
+str = ''
+for element in a:
+    str += element
+# print(str)
+a = [[1,4],[2,5],[3,6]]
+# for x, y in a:
+#     print("x: {}, y: {}".format(x,y))
+
+# for x in range(0,10,3):
+#     print(x)
+
+## While Statement
+x = 1
+# while x<5:
+#     print("x: {}".format(x))
+#     x += 1
+
+
+##if, else
+# x = 1
+# if(x == 2):
+#     print(x)
+# else:
+#     print("X is not equal 2")
+
+# 5. Functions
+def function(arg):
+    print("Function was called")
+    return math.sqrt(arg)
+# x = function(4)
+# print(x)
+def fun(*args):
+    str = 0
+    for arg in args:
+        print("Added: {}".format(arg))
+        str += arg
+    return str
+# print("Sum: ",fun(1,2,3,4))
+
+# say()
+
+# 6. Visualization for python
+## Plots
+
+x = np.arange(1,11)
+plt.plot(x,x**2)
+plt.show()
+plt.savefig("plot01.png")

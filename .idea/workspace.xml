@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5830ba8-d532-4ea0-90ce-764b57355366" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab_00/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_00/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_00/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_00/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Stanisz\Desktop\Studia\Statystyczna eksploracja danych\SED\Lab_00" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.main (2)">
     <configuration name="lines3d_demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -176,22 +183,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1578" height="217" key="GridCell.Tab.0.bottom" timestamp="1585062990767">
+    <state width="1578" height="184" key="GridCell.Tab.0.bottom" timestamp="1585071210296">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1585062990767" />
-    <state width="1578" height="217" key="GridCell.Tab.0.center" timestamp="1585062990766">
+    <state width="1578" height="184" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1585071210296" />
+    <state width="1578" height="184" key="GridCell.Tab.0.center" timestamp="1585071210296">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="217" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1585062990766" />
-    <state width="1578" height="217" key="GridCell.Tab.0.left" timestamp="1585062990766">
+    <state width="1578" height="184" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1585071210296" />
+    <state width="1578" height="184" key="GridCell.Tab.0.left" timestamp="1585071210296">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="217" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1585062990766" />
-    <state width="1578" height="217" key="GridCell.Tab.0.right" timestamp="1585062990767">
+    <state width="1578" height="184" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1585071210296" />
+    <state width="1578" height="184" key="GridCell.Tab.0.right" timestamp="1585071210296">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="217" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1585062990767" />
+    <state width="1578" height="184" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1585071210296" />
     <state x="301" y="61" key="SettingsEditor" timestamp="1585055547926">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

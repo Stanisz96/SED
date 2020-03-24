@@ -162,8 +162,112 @@ print(C.T)
    [4 5 6]]
 ```
 
+## 4. Control Flow tools in Python
+### _for_ Statement
+The for statement in python can be done in various way. Below, You can see some of its examples.
+
+_Example 4.1. **for** Statement using elements of array_
+```
+a = ['jeden, ','dwa, ','trzy']
+str = ''
+for element in a:
+    str += element
+print(str)
+> jeden, dwa, trzy
+```
+_Example 4.2. **for** Statement using elements of two-dimensional array_
+```
+a = [[1,4],[2,5],[3,6]]
+for x, y in a:
+    print("x: {}, y: {}".format(x,y))
+> x: 1, y: 4
+  x: 2, y: 5
+  x: 3, y: 6
+```
+_Example 4.3. **for** Statement using `range()`_
+```
+for x in range(0,10,3):
+    print(x)
+> 0
+  3
+  6
+  9
+```
+
+### _while_ Statement
+`While` can be used when we want to loop what is in _while_ statement - depend of variable boolean value or condition.
+
+_Example 4.4. **while** Statement_
+```
+x = 1
+while x<4:
+    print("x: {}".format(x))
+    x += 1
+> x: 1
+  x: 2
+  x: 3
+```
+### _if, else_ Statement
+`if` and `else` statement is used to check whether a given condition is met or not.
+_Example 4.5. **if,else** Statement_
+```
+x = 1
+if(x == 2):
+    print(X is equal 2)
+else:
+    print("X is not equal 2")
+> X is not equal to 2
+```
+## 5. Functions
+A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result<sup> _[[6]]_</sup>.
+
+_Example 5.1. Create function with parameter and call it_
+```
+def function(arg):
+    print("Function was called")
+    return math.sqrt(arg)
+x = function(4)
+print('Sqrt(x) = {}'.format(x))
+> Function was called
+  Sqrt(x) = 2.0
+```
+_Example 5.2. Function with undefined arguments_
+```
+def fun(*args):
+    str = 0
+    for arg in args:
+        print("Added: {}".format(arg))
+        str += arg
+    return str
+print("Sum: ",fun(1,2,3,4))
+> Added: 1
+  Added: 2
+  Added: 3
+  Added: 4
+  Sum:  10
+```
+_Example 5.3. Import function from another file_
+> hello.py
+```
+def say():
+    print("Hello :)")
+```
+> main.py
+```
+from hello import say
+say()
+> Hello :)
+```
+
+## 6. Creating data visualisation
+For creating plots, graphs, charts etc. - the best option is to use library `matplotlib`.
+### Plots
+
+
+
 [1]: https://www.tutorialsteacher.com/python/python-data-types
 [2]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html?highlight=series#pandas.Series
 [3]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame
 [4]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.matrix.html
 [5]: https://www.tutorialspoint.com/matrix-manipulation-in-python
+[6]: https://www.w3schools.com/python/python_functions.asp
