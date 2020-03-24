@@ -270,7 +270,27 @@ x = np.arange(1,11)
 plt.plot(x,x**2)
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot01.png" height="50%" width="50%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot01.png" height="50%" width="50%" />
+
+<br></br>
+
+_Example 6.2. Create simple plot with some properties_
+```
+x = np.arange(1,11)
+plt.plot(x,x**2,'.',color="#008ae6", markersize=15)
+plt.xlabel(r'$x$',size="x-large")
+plt.ylabel(r'$f(x)=x^2$',size="x-large")
+plt.title("Function f(x)",size="xx-large")
+plt.grid(True)
+plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot02.png" height="50%" width="50%" />
+
+<br></br>
+
+
+
+
 
 [1]: https://www.tutorialsteacher.com/python/python-data-types
 [2]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html?highlight=series#pandas.Series

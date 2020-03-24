@@ -109,7 +109,13 @@ def fun(*args):
 # 6. Visualization for python
 ## Plots
 
-x = np.arange(1,11)
-plt.plot(x,x**2)
-plt.savefig("plot01.png")
-plt.show()
+# x = np.arange(1,11)
+# plt.plot(x,x**2,'.',color="#008ae6", markersize=15)
+# plt.xlabel(r'$x$',size="x-large")
+# plt.ylabel(r'$f(x)=x^2$',size="x-large")
+# plt.title("Function f(x)",size="xx-large")
+# plt.grid(True)
+# plt.savefig("plot02.png")
+# plt.show()
+
+
