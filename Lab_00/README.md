@@ -332,7 +332,7 @@ print(y)
 > [5 8 1 3 0 7 2 4 6]
 ```
 
-_Example 7.2. Plots for distributions: _
+_Example 7.2. Plots for distributions:_
 ```
 laplace = np.random.laplace(4,1,4000)
 normal = np.random.normal(4,0.2,4000)
@@ -366,6 +366,27 @@ plt.show()
 <br></br>
 
 
+## 8. Linear regression
+`linalg.lstsq()` is a function in NumPy, which return  the least-squares solution to a linear matrix equation<sup> _[[8]]_</sup>&nbsp;.
+
+_Example 8.1. Permutation function_
+```
+x = np.arange(20)
+y = np.array([inx-(3*np.random.random() -1.5) for inx in x])
+A = np.vstack([x, np.ones(len(x))]).T
+a,b = np.linalg.lstsq(A, y, rcond=None)[0]
+plt.plot(x,y,"o",color="#b34700")
+plt.plot(x,a*x+b,color="#0033cc")
+plt.grid(True)
+plt.legend(["Original data","Fitted line"])
+plt.show()
+```
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_00/plot03.png" height="100%" width="100%" />
+
+<br></br>
+
+
+
 [1]: https://www.tutorialsteacher.com/python/python-data-types
 [2]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html?highlight=series#pandas.Series
 [3]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame
@@ -373,3 +394,4 @@ plt.show()
 [5]: https://www.tutorialspoint.com/matrix-manipulation-in-python
 [6]: https://www.w3schools.com/python/python_functions.asp
 [7]: https://het.as.utexas.edu/HET/Software/Numpy/reference/generated/numpy.random.permutation.html
+[8]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.lstsq.html

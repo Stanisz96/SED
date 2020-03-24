@@ -144,30 +144,40 @@ def fun(*args):
 # print(y)
 
 # distribution
-laplace = np.random.laplace(4,1,4000)
-normal = np.random.normal(4,0.2,4000)
-poisson = np.random.poisson(4,4000)
-gamma = np.random.gamma(2,2,4000)
-
-figure, axes = plt.subplots(2,2)
-figure.tight_layout(pad=3.0)
-
-axes[0,0].hist(laplace,bins=15,color="#2eb82e",edgecolor="black")
-axes[0,0].set_title("Laplace distribution",size="large")
-
-axes[0,1].hist(normal,bins=15,color="#00a3cc",edgecolor="black")
-axes[0,1].set_title("Normal distribution",size="large")
-
-axes[1,0].hist(poisson,bins=15,color="#e65c00",edgecolor="black")
-axes[1,0].set_title("Poisson distribution",size="large")
-
-axes[1,1].hist(gamma,bins=15,color="#86b300",edgecolor="black")
-axes[1,1].set_title("Gamma distribution",size="large")
-
-for x in axes:
-    for y in x:
-        y.set_xlabel(r'$x$', size="large")
-        y.set_ylabel("Frequency", size="large")
-
-plt.show()
+# laplace = np.random.laplace(4,1,4000)
+# normal = np.random.normal(4,0.2,4000)
+# poisson = np.random.poisson(4,4000)
+# gamma = np.random.gamma(2,2,4000)
+#
+# figure, axes = plt.subplots(2,2)
+# figure.tight_layout(pad=3.0)
+#
+# axes[0,0].hist(laplace,bins=15,color="#2eb82e",edgecolor="black")
+# axes[0,0].set_title("Laplace distribution",size="large")
+#
+# axes[0,1].hist(normal,bins=15,color="#00a3cc",edgecolor="black")
+# axes[0,1].set_title("Normal distribution",size="large")
+#
+# axes[1,0].hist(poisson,bins=15,color="#e65c00",edgecolor="black")
+# axes[1,0].set_title("Poisson distribution",size="large")
+#
+# axes[1,1].hist(gamma,bins=15,color="#86b300",edgecolor="black")
+# axes[1,1].set_title("Gamma distribution",size="large")
+#
+# for x in axes:
+#     for y in x:
+#         y.set_xlabel(r'$x$', size="large")
+#         y.set_ylabel("Frequency", size="large")
+#
+# plt.show()
 # plt.savefig("fig01.png")
+del x
+x = np.arange(20)
+y = np.array([inx-(3*np.random.random() -1.5) for inx in x])
+A = np.vstack([x, np.ones(len(x))]).T
+a,b = np.linalg.lstsq(A, y, rcond=None)[0]
+plt.plot(x,y,"o",color="#b34700")
+plt.plot(x,a*x+b,color="#0033cc")
+plt.grid(True)
+plt.legend(["Original data","Fitted line"])
+plt.show()
