@@ -59,7 +59,7 @@ plt.title("Plot for two classes", size="xx-large")
 plt.xlim(-8, 8)
 plt.ylim(-8, 8)
 plt.grid(True)
-plt.savefig("Exercise01.png", dpi=150)
+# plt.savefig("Exercise01.png", dpi=150)
 plt.close()
 # plt.show()
 
@@ -71,6 +71,8 @@ plt.close()
 data = pd.DataFrame({"Class": [1 for x in range(np.size(X1, 0))], "x": x1, "y": y1})
 temp = pd.DataFrame({"Class": [2 for x in range(np.size(X2, 0))], "x": x2, "y": y2})
 data = data.append(temp, ignore_index=True)
+
+print(data)
 
 # Discriminant Analysis
 
@@ -121,23 +123,23 @@ def plot_function(da, X, cls, cls_pred):
 
 
 ## Linear Discriminant Analysis
-lda = LDA(solver="svd", store_covariance=True)
+lda = LDA()
 cls_pred = lda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
 plot_function(lda, data[['x', 'y']].values, data['Class'].values, cls_pred)
-plt.savefig("Exercise02_lda.png", dpi=150)
+# plt.savefig("Exercise02_lda.png", dpi=150)
+plt.show()
 plt.close()
-# plt.show()
 
 
 ## Quadratic Discriminant Analysis
-qda = QDA(store_covariance=True)
+qda = QDA()
 cls_pred = qda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
 plot_function(qda, data[['x', 'y']].values, data['Class'].values, cls_pred)
-plt.savefig("Exercise02_qda.png", dpi=150)
+# plt.savefig("Exercise02_qda.png", dpi=150)
 plt.close()
 # plt.show()
 
@@ -149,7 +151,7 @@ cls_pred = gnb.partial_fit(data[['x', 'y']].values, data['Class'].values,np.uniq
 plt.figure(figsize=(8, 6))
 plt.title("Bayes")
 plot_function(gnb, data[['x', 'y']].values, data['Class'].values, cls_pred)
-plt.savefig("Exercise03.png", dpi=150)
+# plt.savefig("Exercise03.png", dpi=150)
 plt.close()
 
 plt.close()
@@ -165,7 +167,7 @@ data = data.append(temp, ignore_index=True)
 data = data.append(temp2, ignore_index=True)
 
 ## Create plot for n classes (max 6cls)
-def plot_function(da, X, cls, cls_pred, cls_n):
+def plot_function_N(da, X, cls, cls_pred, cls_n):
     cls_col = ["#EC7063","#A569BD","#5DADE2","#27AE60","#F1C40F","#E67E22"]
     cls_col_dark = ["#922B21","#76448A","#2471A3","#1E8449","#B7950B","#AF601A"]
     cls_col_map = ["#f4aca4","#d5b8e0","#a8d3f0","#acecc7","#f9e79f","f2bc8c"]
@@ -202,16 +204,16 @@ lda = LDA(solver="svd", store_covariance=True)
 cls_pred = lda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
-plot_function(lda, data[['x', 'y']].values, data['Class'].values, cls_pred,3)
-plt.savefig("Exercise04_lda_3.png")
+plot_function_N(lda, data[['x', 'y']].values, data['Class'].values, cls_pred,3)
+# plt.savefig("Exercise04_lda_3.png")
 plt.close()
 
 qda = QDA(store_covariance=True)
 cls_pred = qda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
-plot_function(qda, data[['x', 'y']].values, data['Class'].values, cls_pred,3)
-plt.savefig("Exercise04_qda_3.png")
+plot_function_N(qda, data[['x', 'y']].values, data['Class'].values, cls_pred,3)
+# plt.savefig("Exercise04_qda_3.png")
 plt.close()
 
 
@@ -223,16 +225,16 @@ lda = LDA(solver="svd", store_covariance=True)
 cls_pred = lda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
-plot_function(lda, data[['x', 'y']].values, data['Class'].values, cls_pred,4)
-plt.savefig("Exercise04_lda_4.png")
+plot_function_N(lda, data[['x', 'y']].values, data['Class'].values, cls_pred,4)
+# plt.savefig("Exercise04_lda_4.png")
 plt.close()
 
 qda = QDA(store_covariance=True)
 cls_pred = qda.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
 
 plt.figure(figsize=(8, 6))
-plot_function(qda, data[['x', 'y']].values, data['Class'].values, cls_pred,4)
-plt.savefig("Exercise04_qda_4.png")
+plot_function_N(qda, data[['x', 'y']].values, data['Class'].values, cls_pred,4)
+# plt.savefig("Exercise04_qda_4.png")
 plt.close()
 
 
