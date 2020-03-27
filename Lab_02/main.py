@@ -40,7 +40,7 @@ x2, y2 = zip(*X2)
 x3, y3 = zip(*X3)
 x4, y4 = zip(*X4)
 
-
+# Get normal distribution density
 pdf_X1 = st.multivariate_normal.pdf(X1, m1, S1)
 pdf_X2 = st.multivariate_normal.pdf(X2, m2, S2)
 
