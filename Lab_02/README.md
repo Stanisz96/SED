@@ -65,7 +65,6 @@ Adding to this plot settings for visualization, result is:
 
 
 ## Exercise 2: "LDA & QDA METHODS"
->here add short description what is lda and qda
 ### Data structure
 In this and next exercises - created data are reworked as `DataFrame` object in _Pandas_.
 It is easier to get from one table, array of points for a specific class, or do some other manipulations with data.
@@ -170,7 +169,6 @@ And for _QDA_:
 
 
 ## EXERCISE 3: "NAIVE BAYES"
->here add short description what is Naive Bayes
 
 To perform classifier _Naive Bayes_ is used function from _Sklearn_ `GaussianNB()`.
 On created object with this function is used method `partial_fit()` which return incremental fit on a batch of samples<sup> _[[4]]_</sup>&nbsp;.
