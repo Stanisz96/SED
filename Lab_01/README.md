@@ -1,6 +1,6 @@
 # Laboratory 01 - Fisher's Discriminant
 The numpy library was used for mathematical calculations on the matrices. Whereas for graph visualization - matplotlib.
-## EXERCISE 1: "DWIE KLASY"
+## Exercise 1: "Two classes"
 To perform Fisher's discriminant on two classes, was calculated:
   * mean for coordinates of observations for every class,
   * covariance matrix,
@@ -12,17 +12,17 @@ Results of this exercise are on image below:
 
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_01/Exercise01.png" height="60%" width="60%">
 
-## EXERCISE 2: "DWIE KLASY, ROZKLAD GAUSSA"
+## Exercise 2: "Two classes, normal distribution"
 This task was similar, but for created points of classes - was used normal distribution.
 
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_01/Exercise02.png" height="60%" width="60%">
 
-## EXERCISE 3: "DWIE KLASY, 3D"
+## Exercise 3: "Two classes, 3D"
 This exercise was also similar - only had to add additional dimension to classes.
 
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_01/Exercise03.png" height="60%" width="60%">
 
-## EXERCISE 4: "WIELE KLAS"
+## Exercise 4: "Many classes"
 The last exercise was to apply Fisher's discriminant to more then two classes. The difference was:
   * calculate mean for all classes
   * calculate inter-group variation matrix (B),

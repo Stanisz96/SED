@@ -1,5 +1,5 @@
 # Laboratory 2 - LDA, QDA and naive Bayes
-## Exercise 1: "2D DISTRIBUTION DENSITY"
+## Exercise 1: "2D Distribution density"
 ### Data generation
 For generating points of every classes, is used function `multivariate_normal()`
 from _NumPy_ library. Means, covariances and numbers of points for every class
@@ -64,7 +64,7 @@ Adding to this plot settings for visualization, result is:
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_02/Exercise01.png" height="80%" width="80%" />
 
 
-## Exercise 2: "LDA & QDA METHODS"
+## Exercise 2: "LDA & QDA methods"
 ### Data structure
 In this and next exercises - created data are reworked as `DataFrame` object in _Pandas_.
 It is easier to get from one table, array of points for a specific class, or do some other manipulations with data.
@@ -168,7 +168,7 @@ And for _QDA_:
 
 
 
-## EXERCISE 3: "NAIVE BAYES"
+## Exercise 3: "Naive Bayes"
 
 To perform classifier _Naive Bayes_ is used function from _Sklearn_ `GaussianNB()`.
 On created object with this function is used method `partial_fit()` which return incremental fit on a batch of samples<sup> _[[4]]_</sup>&nbsp;.
@@ -181,7 +181,7 @@ In next step is used function `plot_function()` and it gives:
 
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Lab_02/Exercise03.png" height="80%" width="80%" />
 
-## EXERCISE 4: "MANY CLASSES"
+## Exercise 4: "Many classes"
 In this exercise function `plot_function()` is updated to `plot_function_N()` and can create 
 plots for up to 6 classes. Difference in this functions are:
 * add `cls_col, cls_col_dark, cls_col_map` - to generate colors for every class
