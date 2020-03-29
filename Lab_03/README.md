@@ -2,9 +2,9 @@
 ## Exercise 1: "Confusion matrix"
 Confusion matrix contains boolean values, which is used to evaluate accuracy
  of classifiers.
-```html
-<img src="http://latex.codecogs.com/gif.latex?CM%3D%5Cbegin%7Bpmatrix%7D%20TN%26FP%20%5C%5C%20FN%26TP%20%5Cend%7Bpmatrix%7D" />
-```
+
+><img src="http://latex.codecogs.com/gif.latex?CM%3D%5Cbegin%7Bpmatrix%7D%20TN%26FP%20%5C%5C%20FN%26TP%20%5Cend%7Bpmatrix%7D" />
+
 <br></br>
 Where individual values means:
 * `TN` - _true negative_ (data: negative, prediction: negative)
