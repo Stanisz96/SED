@@ -193,7 +193,6 @@ m = np.mean([m1, m2, m3, m4, m5], axis=0)
 
 # Covariance matrix
 S1 = np.cov(X1.T)
-print(S1)
 S2 = np.cov(X2.T)
 S3 = np.cov(X3.T)
 S4 = np.cov(X4.T)
@@ -212,9 +211,8 @@ g = 5
 # Determination of vector a
 
 ## Inter-group variation matrix
-B = (n1 * np.dot    ((m1 - m).T, (m1 - m)) + n2 * np.dot((m2 - m).T, (m2 - m)) + n3 * np.dot((m3 - m).T,
-                                                                                         (m3 - m)) + n4 * np.dot(
-    (m4 - m).T, (m4 - m)) + n5 * np.dot((m5 - m).T, (m5 - m))) / (g - 1)
+B = (n1 * np.dot((m1 - m).T, (m1 - m)) + n2 * np.dot((m2 - m).T, (m2 - m)) + n3 * np.dot((m3 - m).T,
+     (m3 - m)) + n4 * np.dot((m4 - m).T, (m4 - m)) + n5 * np.dot((m5 - m).T, (m5 - m))) / (g - 1)
 
 print(B)
 ## Within-group variation matrix
