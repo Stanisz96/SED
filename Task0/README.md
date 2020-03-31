@@ -23,5 +23,5 @@ Results of this exercise are on image below:
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task0/task0.png" height="100%" width="100%">
 
 ## Conclusion
-Based on the plot obtained, it can be sad that it is not possible to split classes projection
+Based on the plot obtained, it can be said that it is not possible to split classes projection
 on the optimal direction of vector **a**, to optimally separate classes.
