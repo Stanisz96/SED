@@ -221,7 +221,6 @@ And for testing set:
 ```
 In this situation, also accuracy get better.
 
-## Exercise 2: "ROC curve"
 
 [1]: https://en.wikipedia.org/wiki/Accuracy_and_precision
 [2]: https://en.wikipedia.org/wiki/Sensitivity_and_specificity
