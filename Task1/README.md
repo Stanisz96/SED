@@ -7,7 +7,7 @@ the Gaussian distribution, demonstrate equivalence between this approach and the
 results obtained using function `GaussianNB()` in the case of observations meeting
 the following characteristics:
 * 2 classes,
-* In _class 1_: 40 observations, in _class 2_: - 30 observations
+* In _class 1_: 40 observations, in _class 2_: 30 observations
 * Observations from normal distribution with covariance matrix:
 
     ><img src="http://latex.codecogs.com/gif.latex?S%3D%5Cbegin%7Bpmatrix%7D%204%20%260%20%5C%5C%200%20%26%204%20%5Cend%7Bpmatrix%7D" />
@@ -31,13 +31,12 @@ Based on the task conditions, was created data:
 data = generateGaussData(S, m, [n1, n2], 2)
 print(data)
 >    Class         x         y
- 0       1  0.028639 -4.174586
- 1       1 -4.279737 -2.158976
- 2       1 -3.713896 -3.505592
- 3       1 -0.165549  0.760564
- 4       1 -5.649381  0.897266
+ 0       1 -1.812788 -1.275468
+ 1       1 -2.512403 -1.198960
+ 2       1 -5.792210  0.805873
  ..    ...       ...       ...
- 69      2  3.653877  4.529459
+ 68      2  2.693108  5.266954
+ 69      2  3.279345 -1.441410
 ```
 
 ### Naive Bayes
@@ -45,7 +44,7 @@ To predict class using naive Bayes method, it is needed to calculate:
 * <img src="http://latex.codecogs.com/gif.latex?%5Cpi_i" /> - probability of occurrence of the i-th class estimating as number of i-th class observations divided by number of all observations
 * <img src="http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bp%7D%28%5Cmathbf%7Bx^i%7D%7Ck%29" />  - probability of occurrence of i-th component of x observation, provided that it belongs to class k.
 
-The second value is unknown, but based on assumption about training set - probability can be estimated using probability density for normal distribution:
+The second value is unknown, but based on assumption about generated data - probability can be estimated using probability density for normal distribution:
 
 ><img src="http://latex.codecogs.com/gif.latex?p%28x_i%3Dl%7Ck%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2_k%7D%7De%5E%7B-%5Cfrac%7B%28v-%5Cmu_k%29%5E2%7D%7B2%5Csigma%5E2_k%7D%7D" />
  where: 
@@ -53,7 +52,7 @@ The second value is unknown, but based on assumption about training set - probab
  * <img src="http://latex.codecogs.com/gif.latex?%5Csigma%5E2_k" /> is variance for k class, based on training set
  * <img src="http://latex.codecogs.com/gif.latex?%5Cmu_k" /> is mean for k class, based on training set
 
-To construct a classifier from the probability, is used created function `naiveBayes()`. Parameters for this functions are: _training set_ data and _test set_ data. It calculate probabilities based on above definitions and predict class:
+To construct a classifier from the probability, is used created function `naiveBayes()`. It calculate probabilities based on above definitions and predict class:
 
 > <img src="http://latex.codecogs.com/gif.latex?%5Chat%7Bc%7D%3Dargmax%7B%28%5Cpi_kp%28x%7Ck%29p%28y%7Ck%29%29%7D" />
 
@@ -61,9 +60,55 @@ Using function `naiveBayes()` it return:
 ```
 print(naiveBayes(data,data))
 >     Class         x         y
-  0       1 -2.885888 -2.060685
-  1       1 -1.005605 -0.434520
-  2       1 -4.395286  1.145566
-  ..    ...       ...       ...
-  69      2  2.098806  1.931322
+ 0       1 -1.812788 -1.275468
+ 1       1 -2.512403 -1.198960
+ 2       1 -5.792210  0.805873
+ ..    ...       ...       ...
+ 68      2  2.693108  5.266954
+ 69      2  3.279345 -1.441410
 ```
+
+### GaussianNB
+Next step to solve this task is to designate the predicted classes by means of a `GaussianNB()` <sup> _[[1]]_</sup>&nbsp;.
+Using this function - is created object `gnd`. Then with method `fit()` is created fit Gaussian Naive Bayes according to training set.
+Next used method is `predict()`, which return array of predicted classes for given data:
+```
+gnb = GaussianNB()
+cls_pred = gnb.fit(data[['x', 'y']].values, data['Class'].values)
+              .predict(data[['x', 'y']].values)
+print(cls_pred)
+> [1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1
+   1 1 1 2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2]
+```
+With values from `GaussianNB()` and created function `naiveBayes()`, can be created plot.
+
+### Plot
+To create plot, is written function `plot_function_N()`, which has parameters:
+* `da` - object for discriminant analysis (e.g. LDA, QDA, GNB) or _DataFrame_ object for `naiveBayes()`
+* `X` - data to predict classes
+* `cls` - array of classes for X data
+* `cls_pred` - array of predicted classes for X data
+* `cls_n` - number of classes
+
+Calling this function twice - for `naiveBayes()` and `GaussianNB()`:
+```
+plot_function_N(data, data[['x', 'y']].values, data['Class'].values, naiveBayesData.Class,2)
+plt.savefig("task1_0.png",dpi=150)
+plt.close()
+
+plot_function_N(gnb, data[['x', 'y']].values, data['Class'].values, cls_pred,2)
+plt.savefig("task1_1.png",dpi=150)
+plt.close()
+```
+function create two plots:
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task1/task1_0.png" height="100%" width="100%">
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task1/task1_1.png" height="100%" width="100%">
+
+
+
+
+
+
+[1]: https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html

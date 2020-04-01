@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 mu1, S1, n1 = np.array([-1, 1]), np.array([[1, 0], [0, 1]]), 30
 mu2, S2, n2 = np.array([2, 4]), np.array([[1, 0], [0, 1]]), 30
 mu3, S3, n3 = np.array([-2, 2]), np.array([[1, 0], [0, 1]]), 30
