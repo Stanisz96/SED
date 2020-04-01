@@ -48,8 +48,6 @@ S = [S1, S2]
 
 # Generate data structure with classes
 data = generateGaussData(S, m, [n1, n2], 2)
-print("1. :)")
-print(data)
 
 
 def naiveBayes(trainingSet,testSet):
@@ -77,14 +75,10 @@ def naiveBayes(trainingSet,testSet):
     return predictedClass
 
 
-print("2. ;)")
 naiveBayesData = naiveBayes(data,data)
-print(naiveBayesData)
 
 gnb = GaussianNB()
 cls_pred = gnb.fit(data[['x', 'y']].values, data['Class'].values).predict(data[['x', 'y']].values)
-print("3. ;)")
-print(cls_pred)
 
 
 def plot_function_N(da, X, cls, cls_pred, cls_n):
@@ -120,7 +114,7 @@ def plot_function_N(da, X, cls, cls_pred, cls_n):
         Z_cls = da.predict(np.c_[xx.ravel(), yy.ravel()])
     Z_cls = Z_cls.reshape(xx.shape)
     plt.pcolormesh(xx, yy, Z_cls, cmap=cmap, zorder=0)
-    # plt.contour(xx, yy, Z_cls, [x+1 for x in range(cls_n)], linewidths=1., colors='white', zorder=0)
+    plt.contour(xx, yy, Z_cls, linewidths=1., colors='white', zorder=0)
 
 
 plot_function_N(data, data[['x', 'y']].values, data['Class'].values, naiveBayesData.Class,2)
@@ -128,13 +122,13 @@ plt.legend(["True positive for class 1","False negative for class 1","True posit
 plt.title("Predicted class using created function for Naive Bayes")
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.savefig("task1_0.png",dpi=150)
-plt.close()
+# plt.savefig("task1_0.png",dpi=150)
+plt.show()
 
 plot_function_N(gnb, data[['x', 'y']].values, data['Class'].values, cls_pred,2)
 plt.legend(["True positive for class 1","False negative for class 1","True positive for class 2","False negative for class 2"],loc="lower right")
 plt.title("Predicted class using function GaussianNB()")
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.savefig("task1_1.png",dpi=150)
-plt.close()
+# plt.savefig("task1_1.png",dpi=150)
+plt.show()
