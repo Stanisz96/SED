@@ -1,7 +1,7 @@
 # Task 1
 ## The content of the task
 Using the probability formula for the naive Bayes classifier:
-><img src="http://latex.codecogs.com/gif.latex?%5Cboldsymbol%7B%5Cmathbf%7Bp%7D%7D%281%7C%5Cboldsymbol%7B%5Cmathbf%7Bx%7D%7D%29%20%5Cpropto%20%5Cpi_1%5Cboldsymbol%7B%5Cmathbf%7Bp%7D%7D%28%5Cboldsymbol%7B%5Cmathbf%7Bx%7D%7D%7C1%29%20%3D%5Cpi_1%5Cboldsymbol%7B%5Cmathbf%7Bp%7D%7D%28x%7C1%29%5Cboldsymbol%7B%5Cmathbf%7Bp%7D%7D%28y%7C1%29" />
+><img src="http://latex.codecogs.com/gif.latex?p%281%7C%5Cboldsymbol%7B%5Cmathbf%7Bx%7D%7D%29%20%5Cpropto%20%5Cpi_1p%28%5Cboldsymbol%7B%5Cmathbf%7Bx%7D%7D%7C1%29%20%3D%5Cpi_1p%28x%7C1%29%28y%7C1%29" />
 and assuming that the probability density in individual classes is described by
 the Gaussian distribution, demonstrate equivalence between this approach and the
 results obtained using function `GaussianNB()` in the case of observations meeting
@@ -42,11 +42,11 @@ print(data)
 ### Naive Bayes
 To predict class using naive Bayes method, it is needed to calculate:
 * <img src="http://latex.codecogs.com/gif.latex?%5Cpi_i" /> - probability of occurrence of the i-th class estimating as number of i-th class observations divided by number of all observations
-* <img src="http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bp%7D%28%5Cmathbf%7Bx^i%7D%7Ck%29" />  - probability of occurrence of i-th component of x observation, provided that it belongs to class k.
+* <img src="http://latex.codecogs.com/gif.latex?p%28%5Cmathbf%7Bx^i%7D%7Ck%29" />  - probability of occurrence of i-th component of x observation, provided that it belongs to class k.
 
 The second value is unknown, but based on assumption about generated data - probability can be estimated using probability density for normal distribution:
 
-><img src="http://latex.codecogs.com/gif.latex?p%28x_i%3Dl%7Ck%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2_k%7D%7De%5E%7B-%5Cfrac%7B%28v-%5Cmu_k%29%5E2%7D%7B2%5Csigma%5E2_k%7D%7D" />
+><img src="http://latex.codecogs.com/gif.latex?p%28x_i%3Dl%7Ck%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2_k%7D%7De%5E%7B-%5Cfrac%7B%28l-%5Cmu_k%29%5E2%7D%7B2%5Csigma%5E2_k%7D%7D" />
  where: 
  * <img src="http://latex.codecogs.com/gif.latex?l" /> is value of i-th component of <img src="http://latex.codecogs.com/gif.latex?x" /> , 
  * <img src="http://latex.codecogs.com/gif.latex?%5Csigma%5E2_k" /> is variance for k class, based on training set
@@ -54,7 +54,7 @@ The second value is unknown, but based on assumption about generated data - prob
 
 To construct a classifier from the probability, is used created function `naiveBayes()`. It calculate probabilities based on above definitions and predict class:
 
-> <img src="http://latex.codecogs.com/gif.latex?%5Chat%7Bc%7D%3Dargmax%7B%28%5Cpi_kp%28x%7Ck%29p%28y%7Ck%29%29%7D" />
+> <img src="http://latex.codecogs.com/gif.latex?%5Chat%7Bc%7D%3D%5Cunderset%7Bk%5Cin%20%5Cleft%20%5C%7B%201%2C%5Ccdots%20%2CK%20%5Cright%20%5C%7D%7D%7Bargmax%7D%7B%28%5Cpi_kp%28x%7Ck%29p%28y%7Ck%29%29%7D" />
 
 Using function `naiveBayes()` it return:
 ```
@@ -107,8 +107,9 @@ function create two plots:
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task1/task1_1.png" height="100%" width="100%">
 
 
+## Conclusion
 
-
+Using the probability formula for the naive Bayes classifier defined in task and performed on the generated data from normal distribution, with two classes and the same covariance - returned the same results as if using function `GaussianNB()`.
 
 
 [1]: https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
