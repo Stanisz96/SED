@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import KFold
 
 file = open("wine.data", "r")
 wineText = file.readlines()
@@ -129,7 +130,7 @@ wineData_N = [wineData.loc[:,wineData.columns[:3]],wineData.loc[:,wineData.colum
 TD_N = [train(wineData_N[0]),train(wineData_N[1]),train(wineData_N[2])] # 2,5,10
 
 
-print(TD_N[1][1])
+# print(TD_N[1][1])
 
 # ## Add predicted classes to data
 wineDataPredict_N = [pd.DataFrame(),pd.DataFrame(),pd.DataFrame()]
@@ -142,7 +143,71 @@ for i in range(3):
 # Confusion matrices
 wineDataCM_N = [CM(wineDataPredict_N[0]),CM(wineDataPredict_N[1]),CM(wineDataPredict_N[2])]
 
-print("Limited to the 2, 5 and 10 first components and check accuracy of classifiers")
-print(getCMResultsForCls(wineDataCM_N[0]))
-print(getCMResultsForCls(wineDataCM_N[1]))
-print(getCMResultsForCls(wineDataCM_N[2]))
+# print("Limited to the 2, 5 and 10 first components and check accuracy of classifiers")
+# print(getCMResultsForCls(wineDataCM_N[0]))
+# print(getCMResultsForCls(wineDataCM_N[1]))
+# print(getCMResultsForCls(wineDataCM_N[2]))
+
+
+
+### Limited to the 2 first variables, divide data set to (TRD, VD, TD) 50/25/25 and in this way choose from  _LDA, QDA_ and _NB_
+wineData_TRD = pd.DataFrame()
+wineData_VD = pd.DataFrame()
+wineData_TD = pd.DataFrame()
+
+# print(wineData.loc[wineData.Class == 1, wineData.columns[:3]].index)
+indexCls = np.array([wineData.loc[wineData.Class == 1, wineData.columns[:3]].index.values, wineData.loc[wineData.Class == 2, wineData.columns[:3]].index.values, wineData.loc[wineData.Class == 3, wineData.columns[:3]].index.values])
+indexClsRandom = [0,0,0]
+
+for i in range(3):
+    indexClsRandom[i] = np.random.permutation(indexCls[i])
+    wineData_TRD = wineData_TRD.append(wineData.loc[indexClsRandom[i], wineData.columns[:3]][:int(len(wineData.loc[wineData.Class == i+1]) * 0.5)], ignore_index=True)
+    wineData_VD = wineData_VD.append(wineData.loc[indexClsRandom[i], wineData.columns[:3]][int(len(wineData.loc[wineData.Class == i+1]) * 0.5):int(len(wineData.loc[wineData.Class == i+1]) * (0.75))], ignore_index=True)
+    wineData_TD = wineData_TD.append(wineData.loc[indexClsRandom[i], wineData.columns[:3]][int(len(wineData.loc[wineData.Class == i+1]) * 0.75):], ignore_index=True)
+
+
+# train TRD
+TRD = train(wineData_TRD)
+
+#predict class for VD
+wineDataPredict_VD = pd.DataFrame()
+wineDataPredict_VD["Class"] = wineData_VD.Class.values
+wineDataPredict_VD["lda_cls"] = TRD[0].predict(wineData_VD.loc[:, wineData_VD.columns != 'Class'].values)
+wineDataPredict_VD["qda_cls"] = TRD[1].predict(wineData_VD.loc[:, wineData_VD.columns != 'Class'].values)
+wineDataPredict_VD["gnb_cls"] = TRD[2].predict(wineData_VD.loc[:, wineData_VD.columns != 'Class'].values)
+
+# # print(wineDataPredict_VD)
+# print(len(wineData_VD.Class))
+# print("LDA: ",round(1-sum(wineData_VD.Class.values == wineDataPredict_VD.lda_cls.values)/len(wineData_VD.Class),2))
+# print("QDA: ",round(1-sum(wineData_VD.Class.values == wineDataPredict_VD.qda_cls.values)/len(wineData_VD.Class),2))
+# print("NB: ",round(1-sum(wineData_VD.Class.values == wineDataPredict_VD.gnb_cls.values)/len(wineData_VD.Class),2))
+
+wineData_VD_CM = CM(wineDataPredict_VD)
+# print(getCMResultsForCls(wineData_VD_CM))
+
+
+
+# cross validation k=5
+kf = KFold(n_splits=5,shuffle=True)
+
+error_prob = np.array([0,0,0])
+
+for train_idx, test_idx in kf.split(wineData_N[0]):
+    wineData_Train = wineData.loc[train_idx, wineData.columns[:3]]
+    wineData_Test = wineData.loc[test_idx, wineData.columns[:3]]
+    # train data
+    TRAIN = train(wineData_Train)
+    # predict class
+    wineDataPredict = pd.DataFrame()
+    wineDataPredict["Class"] = wineData_Test.Class.values
+    wineDataPredict["lda_cls"] = TRAIN[0].predict(wineData_Test.loc[:, wineData_Test.columns != 'Class'].values)
+    wineDataPredict["qda_cls"] = TRAIN[1].predict(wineData_Test.loc[:, wineData_Test.columns != 'Class'].values)
+    wineDataPredict["gnb_cls"] = TRAIN[2].predict(wineData_Test.loc[:, wineData_Test.columns != 'Class'].values)
+    k_errors = [sum(wineData_Test.Class.values != wineDataPredict.lda_cls.values),sum(wineData_Test.Class.values != wineDataPredict.qda_cls.values),sum(wineData_Test.Class.values != wineDataPredict.gnb_cls.values)]
+    error_prob = np.sum([error_prob,k_errors], axis=0)
+
+error_prob = error_prob/len(wineData.Class)
+
+print("LDA: ",round(error_prob[0],2)*100,"%")
+print("QDA: ",round(error_prob[1],2)*100,"%")
+print("NB: ",round(error_prob[2],2)*100,"%")

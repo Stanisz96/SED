@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task2/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task2/wine.names" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/wine.names" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,22 +191,22 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1585134656076" />
-    <state width="1578" height="290" key="GridCell.Tab.0.bottom" timestamp="1585857104171">
+    <state width="1578" height="154" key="GridCell.Tab.0.bottom" timestamp="1586108365916">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="290" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1585857104171" />
-    <state width="1578" height="290" key="GridCell.Tab.0.center" timestamp="1585857104171">
+    <state width="1578" height="154" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1586108365916" />
+    <state width="1578" height="154" key="GridCell.Tab.0.center" timestamp="1586108365915">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="290" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1585857104171" />
-    <state width="1578" height="290" key="GridCell.Tab.0.left" timestamp="1585857104170">
+    <state width="1578" height="154" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1586108365915" />
+    <state width="1578" height="154" key="GridCell.Tab.0.left" timestamp="1586108365915">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="290" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1585857104170" />
-    <state width="1578" height="290" key="GridCell.Tab.0.right" timestamp="1585857104171">
+    <state width="1578" height="154" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1586108365915" />
+    <state width="1578" height="154" key="GridCell.Tab.0.right" timestamp="1586108365916">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1578" height="290" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1585857104171" />
+    <state width="1578" height="154" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1586108365916" />
     <state x="301" y="61" key="SettingsEditor" timestamp="1585219430316">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -216,9 +215,9 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="609" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1585161425613" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1585850861829">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1586106715531">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1585850861829" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1586106715531" />
   </component>
 </project>

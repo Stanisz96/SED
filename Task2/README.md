@@ -193,7 +193,35 @@ print(getCMResultsForCls(wineDataCM_N[2]))
  GNB  0.988764  47  129  0.979167  0.007692]
 ```
 
+### Limited to the 2 first variables, divide data set to (TRD, VD, TD) 50/25/25 and in this way choose from  _LDA, QDA_ and _NB_
 
+First step is ti limit data to 2 first variables and divide into three groups:
+* `TRD` (_training dataset_) - dataset of known data on which training is run
+* `VD` (_validation dataset_) - dataset of known data on which is perform class prediction
+* `TD` (_test dataset_) - dataset used to provide an unbiased evaluation of a model fit on the training dataset
+
+Then, with given data, perform training on `TRD` and select the method for `VD` with the lowest percentage of wrong data classification.
+Based on calculation:
+```
+LDA:  16.0%
+QDA:  13.0%
+NB:  16.0%
+```
+The lowest percentage value is for _QDA_. But when repeat choosing random data for `TRD`, `VD` and `TD`, method with
+the lowest percentage has changed, so it can't be chosen base on this data.
+
+### K-fold Cross-validation
+Performed method to choose the best classificator didn't get results. Another way for this is to do k-fold cross-validation.
+Data set is divided on _k_ groups. For each group - set this group as test dataset and remaining as training dataset. Perform evaluation for each test data set. Calculate probability 
+of wrong classification and choose the best method. Last step is to create chosen classificator on whole dataset.
+
+For this cross validation, _k_ is fixed to _5_. To divide dataset is used object `KFold` from _Sklearn_ library.
+```
+LDA:  24.0 %
+QDA:  22.0 %
+NB:  22.0 %
+```
+Similarly to previous point - k-fold cross-validation didn't get the answer for the best classificator.  Depend on random chosing data, method with the lowest error percentage change.
 
 [1]: https://en.wikipedia.org/wiki/Accuracy_and_precision
 [2]: https://en.wikipedia.org/wiki/Sensitivity_and_specificity
