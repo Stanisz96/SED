@@ -43,7 +43,7 @@ graph.view()
 ```
 Result of this decision tree:
 
-
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/Source.gv.pdf" height="100%" width="100%">
 
 
 
