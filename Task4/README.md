@@ -1,15 +1,15 @@
 # Task 4 :seedling:
 ## The content of the task
 Use wine dataset from _Task 3_ to perform following points:
-* load data,
-* name columns, using the description,
-* create full decision tree (leafs with elements of one class),
-* draw full decision tree,
-* check accuracy of the full tree by repeated substitution and cross-validation,
-* use the _cp_ table to select the optimal tree, draw it and compare the results of its
+* [x] load data,
+* [x] name columns, using the description,
+* [x] create full decision tree (leafs with elements of one class),
+* [x] draw full decision tree,
+* [ ] check accuracy of the full tree by repeated substitution and cross-validation,
+* [ ] use the _cp_ table to select the optimal tree, draw it and compare the results of its
 accuracy with the full tree,
-* create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
-* plot the accuracy of the tree as a function of the number of used variables, as well 
+* [ ] create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
+* [ ] plot the accuracy of the tree as a function of the number of used variables, as well 
 as differences in the size of the full and optimal tree.
 
 ## Solution
