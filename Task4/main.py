@@ -31,5 +31,6 @@ column_names = wineData.loc[:,wineData.columns != 'Class'].columns.values
 class_names = ["1","2","3"]
 graph_data = tree.export_graphviz(clf, out_file=None, feature_names=column_names, filled=True,
                                   rounded=True, special_characters=True, class_names=class_names)
-graph = graphviz.Source(graph_data)
-graph.view()
+graph = graphviz.Source(graph_data, format='png')
+graph.render("FullTree")
+
