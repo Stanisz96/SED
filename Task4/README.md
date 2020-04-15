@@ -43,8 +43,11 @@ graph.view()
 ```
 Result of this decision tree:
 
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/Source.gv.pdf" height="100%" width="100%">
-
+<object data="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/Source.gv.pdf" type="application/pdf" height="100%" width="100%">
+    <embed src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/Source.gv.pdf">
+        <p><font size="3">This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</font></p>
+    </embed>
+</object>
 
 
 [1]: https://www.graphviz.org/
