@@ -6,7 +6,7 @@ Use wine dataset from _Task 3_ to perform following points:
 * [x] create full decision tree (leafs with elements of one class),
 * [x] draw full decision tree,
 * [x] check accuracy of the full tree by repeated substitution and cross-validation,
-* [ ] use Minimal Cost-Complexity Pruning, draw it and compare the results of its
+* [x] use Minimal Cost-Complexity Pruning, draw it and compare the results of its
 accuracy with the full tree,
 * [ ] create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
 * [ ] plot the accuracy of the tree as a function of the number of used variables, as well 
@@ -113,7 +113,7 @@ Use _5-fold cross-validation_ to create 5 _wineData test and train sets_. Create
 Next for every _ccp_alpha_ fit decision tree - using _k-wineData_Train_ set. On plot below is mean _ccp_alpha_ for k-testset in 5-fold cross-validation.
 Mean _ccp_alpha_ is calculated from maximum accuracy for k-testset.
 
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/4fold_ccp_alphas.png" height="100%" width="100%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/5fold_ccp_alphas.png" height="100%" width="100%">
 
 Calculated mean ccp_alpha from above plot is: 0.01078. Using this value to create decision tree - return:
 
