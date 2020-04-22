@@ -79,30 +79,45 @@ Thus, it follows that a decision tree that is trained on the same data as it has
 Because of small amount of data, constant ___ is set to 5. To divide dataset is used object `KFold` from _Sklearn_ library.
 Calculating means for derivations of confusion matrix get result for full decision tree:
 ```
-print(sum(d_CM)/5)
->    Class       ACC    TP     TN       TPR       FPR
-  0    1.0  0.991011  58.6  117.8  0.993220  0.010084
-  1    2.0  0.982022  69.0  105.8  0.971831  0.011215
-  2    3.0  0.988764  47.0  129.0  0.979167  0.007692
+print(train_mean_results)
+>   Class  ACC    TP     TN  TPR  FPR
+ 0    1.0  1.0  47.2   95.2  1.0  0.0
+ 1    2.0  1.0  56.8   85.6  1.0  0.0
+ 2    3.0  1.0  38.4  104.0  1.0  0.0
+print(test_mean_results)
+>   Class       ACC    TP    TN       TPR       FPR
+ 0    1.0  0.955238  11.4  22.6  0.970330  0.046791
+ 1    2.0  0.893810  11.6  20.2  0.824603  0.056746
+ 2    3.0  0.938571   8.8  24.6  0.917778  0.053978
 ```
-Mean accuracy for cross-validation method is 1% lower then for repeated substitution. Accuracy is close to _1.00_ and
+Test set mean accuracy for cross-validation method is 1% lower then for repeated substitution. Accuracy is close to _1.00_ and
 it is possibility that classifier is overfitting the training data. Good way is to check data for 10-fold cross-validation:
 ```
-print(sum(d_CM)/10)
->    Class       ACC    TP     TN       TPR       FPR
-  0    1.0  0.992697  58.3  118.4  0.988136  0.005042
-  1    2.0  0.991573  70.3  106.2  0.990141  0.007477
-  2    3.0  0.996629  47.7  129.7  0.993750  0.002308
+print(train_mean_results)
+>   Class  ACC    TP     TN  TPR  FPR
+ 0    1.0  1.0  53.1  107.1  1.0  0.0
+ 1    2.0  1.0  63.9   96.3  1.0  0.0
+ 2    3.0  1.0  43.2  117.0  1.0  0.0
+
+print(test_mean_results)
+>   Class       ACC   TP    TN       TPR       FPR
+ 0    1.0  0.943791  5.4  11.4  0.924123  0.038810
+ 1    2.0  0.887255  6.1   9.7  0.870476  0.094128
+ 2    3.0  0.943464  4.3  12.5  0.905000  0.042729
 ```
-Accuracy is even higher then for 5-fold cross-validation. So it can be assumed that classifier is set good for this dataset.
+Accuracy for test set data is similar for 5-fold cross-validation. So it can be assumed that classifier is  not overfitted for this dataset. Accuracy for test sets and training sets doesn't have high difference.
 
 ### Minimal Cost-Complexity Pruning
-To perform _Minimal Cost-Complexity Pruning_ are used methods on _DecisionTreeClassifier_ object <sup> _[[2]]_</sup>&nbsp;:
-* `cost_complexity_pruning_path()` - compute the pruning path during Minimal Cost-Complexity Pruning,
-* `decision_path()` - return the decision path in the tree.
+Use _5-fold cross-validation_ to create 5 _wineData test and train sets_. Create `DecisionTreeClassifier()` object and use function
+`cost_complexity_pruning_path()` for _k-wineData_Train_. This function return ccp_alphas (cost complexity pruning alphas).
+Next for every _ccp_alpha_ fit decision tree - using _k-wineData_Train_ set. On plot below is mean _ccp_alpha_ for k-testset in 5-fold cross-validation.
+Mean _ccp_alpha_ is calculated from maximum accuracy for k-testset.
 
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/4fold_ccp_alphas.png" height="100%" width="100%">
 
+Calculated mean ccp_alpha from above plot is: 0.01078. Using this value to create decision tree - return:
 
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/CcpAlphaTree.png" height="100%" width="100%">
 
 
 
