@@ -124,66 +124,138 @@ print(train_mean_results)
 print(test_mean_results)
 
 
-### Minimal Cost-Complexity Pruning using k-fold cross-validation
-train_scores = []
-test_scores = []
-ccp_alphas = []
-impurities = []
+# ### Minimal Cost-Complexity Pruning using k-fold cross-validation
+# train_scores = []
+# test_scores = []
+# ccp_alphas = []
+# impurities = []
+#
+# for train_idx, test_idx in kf.split(wineData):
+#     wineData_Train = wineData.loc[train_idx, :]
+#     wineData_Test = wineData.loc[test_idx, :]
+#     clf_min = tree.DecisionTreeClassifier()
+#     path = clf_min.cost_complexity_pruning_path(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
+#     ccp_alphas.append(path.ccp_alphas)
+#     impurities.append(path.impurities)
+#
+#     clfs_min = []
+#     for ccp_alpha in ccp_alphas[-1]:
+#         clf_min = tree.DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_alpha)
+#         clf_min.fit(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
+#         clfs_min.append(clf_min)
+#
+#     # fig, ax = plt.subplots()
+#     # ax.plot(ccp_alphas[:-1], impurities[:-1], marker='o', drawstyle="steps-post")
+#     # ax.set_xlabel("effective alpha")
+#     # ax.set_ylabel("total impurity of leaves")
+#     # ax.set_title("Total Impurity vs effective alpha for training set")
+#     # plt.show()
+#
+#     train_scores.append([clf_min.score(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values) for clf_min in clfs_min])
+#     test_scores.append([clf_min.score(wineData_Test.loc[:,wineData_Test.columns != 'Class'].values, wineData_Test['Class'].values) for clf_min in clfs_min])
+#
+#     # fig, ax = plt.subplots()
+#     # ax.set_xlabel("alpha")
+#     # ax.set_ylabel("accuracy")
+#     # ax.set_title("Accuracy vs alpha for training and testing sets")
+#     # ax.plot(ccp_alphas[-1], train_scores[-1], marker='o', label="train",
+#     #         drawstyle="steps-post")
+#     # ax.plot(ccp_alphas[-1], test_scores[-1], marker='o', label="test",
+#     #         drawstyle="steps-post")
+#     # ax.legend()
+#     # plt.show()
+#
+# # MEANS
+# max_len = max([len(i) for i in ccp_alphas])
+# max_train_score_idxs = [np.where(i == np.amax(i)) for i in train_scores]
+# max_test_score_idxs = [np.where(i == np.amax(i)) for i in test_scores]
+# # print(max_test_score_idxs[0])
+# max_ccp_alphas_train = [max(ccp_alphas[i][max_train_score_idxs[i][0]]) for i in range(5)]
+# max_ccp_alphas_test = [max(ccp_alphas[i][max_test_score_idxs[i][0]]) for i in range(5)]
+# # print(sum(ccp_alphas[0][max_test_score_idxs[0][0]])/len(max_test_score_idxs[0][0]))
+# # print(max_len_ccp)
+# # print(mean_cpp_alphas)
+#
+# # k = [1,2,3,4,5]
+# # fig, ax = plt.subplots()
+# # ax.set_xlabel("K")
+# # ax.set_ylabel("ccp_alpha")
+# # ax.set_title("Mean ccp_alpha for k's test set with maximum accuracy")
+# # ax.plot(k, mean_ccp_alphas_test, marker='o', label="test",
+# #         drawstyle="steps-post")
+# # # ax.legend()
+# # plt.savefig("5fold_ccp_alphas.png",dpi=150)
+# # plt.show()
+# mean_total_ccp_alpha = sum(max_ccp_alphas_test)/len(max_ccp_alphas_test)
+# print("Mean ccp_alpha: ",mean_total_ccp_alpha) # Mean ccp_alpha:  0.02323620625392982
+#
+# # ### Draw  decision tree for ccp_alpha
+# # clf_ccp_alpha = tree.DecisionTreeClassifier(ccp_alpha=mean_total_ccp_alpha)
+# # clf_ccp_alpha.fit(wineData.loc[:,wineData.columns != 'Class'].values, wineData['Class'].values)
+# # column_names = wineData.loc[:,wineData.columns != 'Class'].columns.values
+# # class_names = ["1","2","3"]
+# # graph_data = tree.export_graphviz(clf_ccp_alpha, out_file=None, feature_names=column_names, filled=True,
+# #                                   rounded=True, special_characters=True, class_names=class_names)
+# # graph = graphviz.Source(graph_data, format='png')
+# # graph.render("CcpAlphaTree")
 
-for train_idx, test_idx in kf.split(wineData):
-    wineData_Train = wineData.loc[train_idx, :]
-    wineData_Test = wineData.loc[test_idx, :]
-    clf_min = tree.DecisionTreeClassifier()
-    path = clf_min.cost_complexity_pruning_path(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
-    ccp_alphas.append(path.ccp_alphas)
-    impurities.append(path.impurities)
 
-    clfs_min = []
-    for ccp_alpha in ccp_alphas[-1]:
-        clf_min = tree.DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_alpha)
-        clf_min.fit(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
-        clfs_min.append(clf_min)
 
-    # fig, ax = plt.subplots()
-    # ax.plot(ccp_alphas[:-1], impurities[:-1], marker='o', drawstyle="steps-post")
-    # ax.set_xlabel("effective alpha")
-    # ax.set_ylabel("total impurity of leaves")
-    # ax.set_title("Total Impurity vs effective alpha for training set")
-    # plt.show()
 
-    train_scores.append([clf_min.score(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values) for clf_min in clfs_min])
-    test_scores.append([clf_min.score(wineData_Test.loc[:,wineData_Test.columns != 'Class'].values, wineData_Test['Class'].values) for clf_min in clfs_min])
 
-# MEANS
-max_len = max([len(i) for i in ccp_alphas])
-max_train_score_idxs = [np.where(i == np.amax(i)) for i in train_scores]
-max_test_score_idxs = [np.where(i == np.amax(i)) for i in test_scores]
-# print(max_test_score_idxs[0])
-mean_ccp_alphas_train = [sum(ccp_alphas[i][max_train_score_idxs[i][0]])/len(max_train_score_idxs[i][0]) for i in range(5)]
-mean_ccp_alphas_test = [sum(ccp_alphas[i][max_test_score_idxs[i][0]])/len(max_test_score_idxs[i][0]) for i in range(5)]
-# print(sum(ccp_alphas[0][max_test_score_idxs[0][0]])/len(max_test_score_idxs[0][0]))
-# print(max_len_ccp)
-# print(mean_cpp_alphas)
 
-k = [1,2,3,4,5]
-fig, ax = plt.subplots()
-ax.set_xlabel("K")
-ax.set_ylabel("ccp_alpha")
-ax.set_title("Mean ccp_alpha for k's test set with maximum accuracy")
-ax.plot(k, mean_ccp_alphas_test, marker='o', label="test",
-        drawstyle="steps-post")
-# ax.legend()
-plt.savefig("5fold_ccp_alphas.png",dpi=150)
-plt.show()
-mean_total_ccp_alpha = sum(mean_ccp_alphas_test)/len(mean_ccp_alphas_test)
-print("Mean ccp_alpha: ",mean_total_ccp_alpha) # Mean ccp_alpha:  0.01071973699112266
 
-# ### Draw  decision tree for ccp_alpha
-# clf_ccp_alpha = tree.DecisionTreeClassifier(random_state=0, ccp_alpha=mean_total_ccp_alpha)
-# clf_ccp_alpha.fit(wineData.loc[:,wineData.columns != 'Class'].values, wineData['Class'].values)
-# column_names = wineData.loc[:,wineData.columns != 'Class'].columns.values
-# class_names = ["1","2","3"]
-# graph_data = tree.export_graphviz(clf_ccp_alpha, out_file=None, feature_names=column_names, filled=True,
-#                                   rounded=True, special_characters=True, class_names=class_names)
-# graph = graphviz.Source(graph_data, format='png')
-# graph.render("CppAlphaTree")
+
+### Create decision tree for the first: 2, 3, 4, etc. variables
+
+def get_optimal_tree_alpha(n_var, data):
+    train_scores = []
+    test_scores = []
+    ccp_alphas = []
+    impurities = []
+
+    data = data.loc[:,data.columns[:(n_var+1)]]
+    for train_idx, test_idx in kf.split(data):
+        wineData_Train = data.loc[train_idx, :]
+        wineData_Test = data.loc[test_idx, :]
+        clf_min = tree.DecisionTreeClassifier()
+        path = clf_min.cost_complexity_pruning_path(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
+        ccp_alphas.append(path.ccp_alphas)
+        impurities.append(path.impurities)
+
+        clfs_min = []
+        for ccp_alpha in ccp_alphas[-1]:
+            clf_min = tree.DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_alpha)
+            clf_min.fit(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values)
+            clfs_min.append(clf_min)
+
+        train_scores.append([clf_min.score(wineData_Train.loc[:,wineData_Train.columns != 'Class'].values, wineData_Train['Class'].values) for clf_min in clfs_min])
+        test_scores.append([clf_min.score(wineData_Test.loc[:,wineData_Test.columns != 'Class'].values, wineData_Test['Class'].values) for clf_min in clfs_min])
+
+    # MAX
+    max_train_score_idxs = [np.where(i == np.amax(i)) for i in train_scores]
+    max_test_score_idxs = [np.where(i == np.amax(i)) for i in test_scores]
+    # max_ccp_alphas_train = [max(ccp_alphas[i][max_train_score_idxs[i][0]]) for i in range(5)]
+    max_ccp_alphas_test = [max(ccp_alphas[i][max_test_score_idxs[i][0]]) for i in range(5)]
+
+    mean_total_ccp_alpha = sum(max_ccp_alphas_test)/len(max_ccp_alphas_test)
+    return mean_total_ccp_alpha
+
+ccp_alphas_table = []
+n_leaves_table = []
+depth_table =[]
+for x in range(2,14):
+    ccp_alphas_table.append(round(get_optimal_tree_alpha(x,wineData),4))
+    clf = tree.DecisionTreeClassifier(ccp_alpha=ccp_alphas_table[-1])
+    tempData = wineData.loc[:,wineData.columns[:(x+1)]]
+    clf.fit(tempData.loc[:,tempData.columns != 'Class'].values, tempData['Class'].values)
+    n_leaves_table.append(clf.get_n_leaves())
+    depth_table.append(clf.get_depth())
+
+var_decision_tree_prop = pd.DataFrame()
+var_decision_tree_prop["Variables"] = np.linspace(2,13,num=12, dtype='int64')
+var_decision_tree_prop["Ccp_alphas"] = ccp_alphas_table
+var_decision_tree_prop["Leaves"] = n_leaves_table
+var_decision_tree_prop["Depth"] = depth_table
+
+print(var_decision_tree_prop)

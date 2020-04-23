@@ -8,7 +8,7 @@ Use wine dataset from _Task 3_ to perform following points:
 * [x] check accuracy of the full tree by repeated substitution and cross-validation,
 * [x] use Minimal Cost-Complexity Pruning, draw it and compare the results of its
 accuracy with the full tree,
-* [ ] create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
+* [x] create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
 * [ ] plot the accuracy of the tree as a function of the number of used variables, as well 
 as differences in the size of the full and optimal tree.
 
@@ -113,13 +113,34 @@ Use _5-fold cross-validation_ to create 5 _wineData test and train sets_. Create
 Next for every _ccp_alpha_ fit decision tree - using _k-wineData_Train_ set. On plot below is mean _ccp_alpha_ for k-testset in 5-fold cross-validation.
 Mean _ccp_alpha_ is calculated from maximum accuracy for k-testset.
 
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/5fold_ccp_alphas.png" height="100%" width="100%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/5fold_ccp_alphas.png" height="75%" width="75%">
 
-Calculated mean ccp_alpha from above plot is: 0.01078. Using this value to create decision tree - return:
+Calculated mean ccp_alpha from above plot is: 0.02324. Using this value to create decision tree - return:
 
-<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/CcpAlphaTree.png" height="100%" width="100%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/CcpAlphaTree.png" height="75%" width="75%">
 
 
+### Create decision tree for the first: 2, 3, 4, etc. variables
+Using method of creating most optimal decision tree from point above - can create table with properties of decision
+tree with different number of variables. Created _DataFrame_ object `var_decision_tree_prop` contains table for alphas, number of leaves and depth - depend on number of variables in dataset:
+
+```
+print(var_decision_tree_prop)
+>     Variables  Ccp_alphas  Leaves  Depth
+  0           2      0.0213       5      3
+  1           3      0.0310       4      3
+  2           4      0.0268       5      3
+  3           5      0.0390       5      3
+  4           6      0.0251       4      3
+  5           7      0.0230       5      3
+  6           8      0.0319       5      3
+  7           9      0.0189       5      3
+  8          10      0.0187       7      4
+  9          11      0.0472       4      3
+  10         12      0.0208       5      4
+  11         13      0.0208       7      3
+
+```
 
 
 [1]: https://www.graphviz.org/
