@@ -244,6 +244,7 @@ def get_optimal_tree_alpha(n_var, data):
 ccp_alphas_table = []
 n_leaves_table = []
 depth_table =[]
+score_table = []
 for x in range(2,14):
     ccp_alphas_table.append(round(get_optimal_tree_alpha(x,wineData),4))
     clf = tree.DecisionTreeClassifier(ccp_alpha=ccp_alphas_table[-1])
@@ -251,11 +252,44 @@ for x in range(2,14):
     clf.fit(tempData.loc[:,tempData.columns != 'Class'].values, tempData['Class'].values)
     n_leaves_table.append(clf.get_n_leaves())
     depth_table.append(clf.get_depth())
+    score_table.append(round(clf.score(tempData.loc[:,tempData.columns != 'Class'].values, tempData['Class'].values),4))
 
 var_decision_tree_prop = pd.DataFrame()
 var_decision_tree_prop["Variables"] = np.linspace(2,13,num=12, dtype='int64')
 var_decision_tree_prop["Ccp_alphas"] = ccp_alphas_table
 var_decision_tree_prop["Leaves"] = n_leaves_table
 var_decision_tree_prop["Depth"] = depth_table
+var_decision_tree_prop["Mean accuracy"] = score_table
 
 print(var_decision_tree_prop)
+
+var = [x for x in range(2,14)]
+fig, ax = plt.subplots()
+ax.set_xlabel("Used variables")
+ax.set_ylabel("Mean accuracy")
+ax.set_title("Mean accuracy of the tree as a function of the number of used variables")
+ax.plot(var, score_table, marker='o', label="test",
+        drawstyle="steps-post")
+# ax.legend()
+plt.savefig("accuracy.png",dpi=150)
+plt.close()
+
+fig, ax = plt.subplots()
+ax.set_xlabel("Used variables")
+ax.set_ylabel("Depth")
+ax.set_title("Depth of the tree as a function of the number of used variables")
+ax.plot(var, depth_table, marker='o', label="test",
+        drawstyle="steps-post")
+# ax.legend()
+plt.savefig("depth.png",dpi=150)
+plt.close()
+
+fig, ax = plt.subplots()
+ax.set_xlabel("Used variables")
+ax.set_ylabel("Number of leaves")
+ax.set_title("Number of leaves of the tree as a function of the number of used variables")
+ax.plot(var, n_leaves_table, marker='o', label="test",
+        drawstyle="steps-post")
+# ax.legend()
+plt.savefig("leaves.png",dpi=150)
+plt.close()

@@ -9,7 +9,7 @@ Use wine dataset from _Task 3_ to perform following points:
 * [x] use Minimal Cost-Complexity Pruning, draw it and compare the results of its
 accuracy with the full tree,
 * [x] create tree for the first: 2, 3, 4, etc. variables - determine the most optimal tree each time,
-* [ ] plot the accuracy of the tree as a function of the number of used variables, as well 
+* [x] plot the accuracy of the tree as a function of the number of used variables, as well 
 as differences in the size of the full and optimal tree.
 
 ## Solution
@@ -126,21 +126,31 @@ tree with different number of variables. Created _DataFrame_ object `var_decisio
 
 ```
 print(var_decision_tree_prop)
->     Variables  Ccp_alphas  Leaves  Depth
-  0           2      0.0213       5      3
-  1           3      0.0310       4      3
-  2           4      0.0268       5      3
-  3           5      0.0390       5      3
-  4           6      0.0251       4      3
-  5           7      0.0230       5      3
-  6           8      0.0319       5      3
-  7           9      0.0189       5      3
-  8          10      0.0187       7      4
-  9          11      0.0472       4      3
-  10         12      0.0208       5      4
-  11         13      0.0208       7      3
-
+>   Variables  Ccp_alphas  Leaves  Depth  Mean accuracy
+0           2      0.0425       3      2         0.8146
+1           3      0.0314       4      3         0.8371
+2           4      0.0376       5      3         0.8708
+3           5      0.0284       5      3         0.8708
+4           6      0.0208       7      3         0.9270
+5           7      0.0273       5      3         0.9719
+6           8      0.0168       5      3         0.9719
+7           9      0.0262       5      3         0.9719
+8          10      0.0145       7      4         0.9944
+9          11      0.0250       4      3         0.9607
+10         12      0.0329       4      3         0.9607
+11         13      0.0167       8      3         0.9775
 ```
+
+### Plot the accuracy of the tree as a function of the number of used variables, as well as differences in the size of the full and optimal tree
+
+Using previous _DataFrame_ `var_decision_tree_prop` can create plots as below:
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/accuracy.png" height="75%" width="75%">
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/depth.png" height="75%" width="75%">
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task4/leaves.png" height="75%" width="75%">
+
 
 
 [1]: https://www.graphviz.org/
