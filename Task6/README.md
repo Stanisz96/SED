@@ -6,7 +6,7 @@ List to do:
 * [ ] compare SVC with LDA.
 
 
-### Generate data
+## Generate data
 To generate observations for classes from normal distribution is used created function
 `generateGaussData()`. This function return _DataFrame_ object with normal distribution
 observations - depending on parameters:
@@ -28,10 +28,19 @@ print(gaussData)
  88      3 -1.616829  3.035725
  89      3 -1.232168  3.934738
 ```
-### SVC with linear kernel
+## SVC with linear kernel
+For _Support Vector Classification_ is used object `SVC()`. To create classifier is used method `fit()` using all data as training dataset.
+After this is used `predict()` method to predict classes for given data. Next, using function from _Task 1_<sup> _[[2]]_</sup>&nbsp; is created plot.
+Used parameters for this _SVC_ classifier are: 
+* regularization parameter: C = 1
+* kernel: linear
 
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/svc.png" height="75%" width="75%">
 
+### SVC accuracy depend on regularization parameter
+To get plot for SVC accuracy depend on regularization parameter - is repeated operation as in point above (for different C).
 
 
 
 [1]: https://github.com/Stanisz96/SED/tree/master/Task0
+[2]: https://github.com/Stanisz96/SED/tree/master/Task1
