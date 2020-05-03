@@ -115,15 +115,19 @@ def plot_function_N(da, X, cls, cls_pred, cls_n):
 # Confusion matrix
 def CM(data):
     cls_n = data['Class'].max()
-    # CM_lda = np.zeros([cls_n, cls_n])
+    CM_lda = np.zeros([cls_n, cls_n])
     CM_svc = np.zeros([cls_n, cls_n])
 
     for i in range(cls_n):
         for j in range(cls_n):
-            # CM_lda[i, j] = sum(data.lda_cls[data.Class == i + 1] == j + 1)
-            CM_svc[i, j] = sum(data.svc_cls[data.Class == i + 1] == j + 1)
+            try:
+                CM_lda[i, j] = sum(data.lda_cls[data.Class == i + 1] == j + 1)
+            except:
+                CM_svc[i, j] = sum(data.svc_cls[data.Class == i + 1] == j + 1)
 
-    return CM_svc
+
+
+    return CM_lda, CM_svc
 
 
 
@@ -170,21 +174,21 @@ def create_SVC(_C, data):
 
 ACC_table = []
 C_table = []
-for i in range(1,200,1):
-    dataSVC = create_SVC(i/200, gaussData)
-    ACC_table.append(derivationsCM(CM(dataSVC)).ACC.values)
-    C_table.append(i/200)
-ACC_table = np.array(ACC_table)
-
-plt.plot(C_table, ACC_table[:,0], drawstyle="steps-post")
-plt.plot(C_table, ACC_table[:,1], drawstyle="steps-post")
-plt.plot(C_table, ACC_table[:,2], drawstyle="steps-post")
-plt.title("Accuracy depend on regularization parameter")
-plt.xlabel("Regularization parameter [C]")
-plt.ylabel("Accuracy")
-plt.legend(["Class 1","Class 2", "Class 3"])
-plt.savefig("img/acc_c3.png",dpi=150)
-plt.show()
+# for i in range(1,200,1):
+#     dataSVC = create_SVC(i, gaussData)
+#     ACC_table.append(derivationsCM(CM(dataSVC)[1]).ACC.values)
+#     C_table.append(i)
+# ACC_table = np.array(ACC_table)
+#
+# plt.plot(C_table, ACC_table[:,0], drawstyle="steps-post")
+# plt.plot(C_table, ACC_table[:,1], drawstyle="steps-post")
+# plt.plot(C_table, ACC_table[:,2], drawstyle="steps-post")
+# plt.title("Accuracy depend on regularization parameter")
+# plt.xlabel("Regularization parameter [C]")
+# plt.ylabel("Accuracy")
+# plt.legend(["Class 1","Class 2", "Class 3"])
+# plt.savefig("img/acc_c_high3.png",dpi=150)
+# plt.show()
 
 
 
@@ -240,3 +244,70 @@ def plot_SVC():
     plt.show()
 
 # print(gaussData.loc[gaussData['Class'] == 1, 'x'])
+
+
+
+## SVC VS LDA
+def svc_lda():
+    gaussData = generateGaussData([S1, S2, S3], [m1, m2, m3], [n1, n2, n3], 3)
+    # LDA
+    clf_LDA = LDA()
+    clf_LDA = clf_LDA.fit(gaussData.loc[:, gaussData.columns != 'Class'].values, gaussData['Class'].values)
+    testData_LDA = pd.DataFrame()
+    testData_LDA["Class"] = gaussData.Class.values
+    testData_LDA["lda_cls"] = clf_LDA.predict(gaussData.loc[:, gaussData.columns != 'Class'].values)
+
+    # SVC
+    clf_SVC = SVC(C=75, kernel="linear")
+    clf_SVC = clf_SVC.fit(gaussData.loc[:, gaussData.columns != 'Class'].values, gaussData['Class'].values)
+    testData_SVC = pd.DataFrame()
+    testData_SVC["Class"] = gaussData.Class.values
+    testData_SVC["svc_cls"] = clf_SVC.predict(gaussData.loc[:, gaussData.columns != 'Class'].values)
+
+    #CM derivations
+    LDA_table = derivationsCM(CM(testData_LDA)[0])
+    SVC_table = derivationsCM(CM(testData_SVC)[1])
+
+    return LDA_table, SVC_table
+
+acc_dif_table = []
+n_table = []
+
+for i in range(100):
+    temp_lda, temp_svc = svc_lda()
+    acc_dif_table.append([temp_svc.ACC.values[0] - temp_lda.ACC.values[0],
+                                   temp_svc.ACC.values[1] - temp_lda.ACC.values[1],
+                                   temp_svc.ACC.values[2] - temp_lda.ACC.values[2]])
+    n_table.append(i)
+acc_dif_table = np.array(acc_dif_table)
+mean_table = [np.full((1,len(n_table)), np.mean(acc_dif_table[:,0])),
+              np.full((1,len(n_table)), np.mean(acc_dif_table[:,1])),
+              np.full((1,len(n_table)), np.mean(acc_dif_table[:,2]))]
+mean_table = np.array(mean_table)
+
+plt.plot(n_table, acc_dif_table[:,0], drawstyle="steps-post")
+plt.plot(n_table,mean_table[0,:][0], drawstyle="steps-post")
+plt.title("Difference of accuracy for LDA and SVC (Class 1)")
+plt.xlabel("number of generated sample data")
+plt.ylabel("SVC accuracy minus LDA accuracy")
+plt.legend(["Class 1","Mean"])
+plt.savefig("img/difference1.png",dpi=150)
+plt.close()
+
+plt.plot(n_table, acc_dif_table[:,1], drawstyle="steps-post")
+plt.plot(n_table, mean_table[1,:][0], drawstyle="steps-post")
+plt.title("Difference of accuracy for LDA and SVC (Class 2)")
+plt.xlabel("number of generated sample data")
+plt.ylabel("SVC accuracy minus LDA accuracy")
+plt.legend(["Class 2","Mean"])
+plt.savefig("img/difference2.png",dpi=150)
+plt.close()
+
+plt.plot(n_table, acc_dif_table[:,2], drawstyle="steps-post")
+plt.plot(n_table, mean_table[2,:][0], drawstyle="steps-post")
+plt.title("Difference of accuracy for LDA and SVC (Class 3)")
+plt.xlabel("number of generated sample data")
+plt.ylabel("SVC accuracy minus LDA accuracy")
+plt.legend(["Class 3","Mean"])
+plt.savefig("img/difference3.png",dpi=150)
+plt.close()

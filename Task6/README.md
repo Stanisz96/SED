@@ -2,8 +2,8 @@
 ## The content of the task
 List to do:
 * [x] generate data from Gaussian Distribution - with parameters as in _Task 0_ <sup> _[[1]]_</sup>&nbsp;,
-* [ ] Check SVC with linear kernel for this data,
-* [ ] compare SVC with LDA.
+* [x] Check SVC with linear kernel for this data,
+* [x] compare SVC with LDA.
 
 
 ## Generate data
@@ -51,8 +51,25 @@ To get plot for SVC accuracy depend on regularization parameter - is repeated op
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c2.png" height="48%" width="48%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c3.png" height="48%" width="48%">
 </div>
 
-Looking at plots with different generated Gaussian distribution data but with the same parameters - can be said that optimal value for parameter _C_ is about: _0.25-0.3_.
+Looking at plots with different generated Gaussian distribution data but with the same parameters - can be said that optimal value for parameter _C_ is about: _~0.26_.
 
+But after looking at plots for high values - it can be said that better option is to set parameter _C_ to high value as _>75_
+
+<div style="display: inline;">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c_high.png" height="48%" width="48%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c_high1.png" height="48%" width="48%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c_high2.png" height="48%" width="48%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c_high3.png" height="48%" width="48%">
+</div>
+
+## SVC VS LDA
+Generate 100 times data and create plots with accuracy difference give results:
+
+<div style="display: inline;">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/difference1.png" height="30%" width="30%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/difference2.png" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/difference3.png" height="30%" width="30%"> 
+</div>
+
+_SVC_ with linear kernel is better for separated Class 2. As on the second plot, almost every accuracy is better for _SVC_. Means for 1 and 3 classes are in favor for _SVC_ but single values seems to be random. So it can't be said that this is better solution for this classes.
+However it can be said that total score is better for _SVC_ then for _LDA_.
 
 
 
