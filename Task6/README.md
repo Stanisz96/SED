@@ -37,8 +37,22 @@ Used parameters for this _SVC_ classifier are:
 
 <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/svc.png" height="75%" width="75%">
 
+<br></br>
+With the same parameters but different generated data can be shown plot - using created function `plot_SVC()` - with margins:
+
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/svc_cls.png" height="75%" width="75%">
+
+
 ### SVC accuracy depend on regularization parameter
 To get plot for SVC accuracy depend on regularization parameter - is repeated operation as in point above (for different C).
+
+<div style="display: inline;">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c.png" height="48%" width="48%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c1.png" height="48%" width="48%">
+<img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c2.png" height="48%" width="48%"> <img src="https://raw.githubusercontent.com/Stanisz96/SED/master/Task6/img/acc_c3.png" height="48%" width="48%">
+</div>
+
+Looking at plots with different generated Gaussian distribution data but with the same parameters - can be said that optimal value for parameter _C_ is about: _0.25-0.3_.
+
 
 
 

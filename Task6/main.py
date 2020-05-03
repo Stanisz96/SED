@@ -6,9 +6,9 @@ from matplotlib import colors
 from sklearn.svm import SVC
 
 # Properties for generated data
-m1, S1, n1 = np.array([-1, 1]), np.array([[1, 0], [0, 1]]), 30
-m2, S2, n2 = np.array([2, 4]), np.array([[1, 0], [0, 1]]), 30
-m3, S3, n3 = np.array([-2, 2]), np.array([[1, 0], [0, 1]]), 30
+m1, S1, n1 = np.array([-1, 1]), np.array([[1, 0], [0, 1]]), 40
+m2, S2, n2 = np.array([2, 4]), np.array([[1, 0], [0, 1]]), 40
+m3, S3, n3 = np.array([-2, 2]), np.array([[1, 0], [0, 1]]), 40
 
 
 def generateGaussData(S, m, n, cls_n):
@@ -42,7 +42,7 @@ def generateGaussData(S, m, n, cls_n):
 
 
 gaussData = generateGaussData([S1,S2,S3], [m1,m2,m3],[n1,n2,n3],3)
-print(gaussData)
+# print(gaussData)
 # Divide data to train and test
 # PU_idx = np.random.rand(len(gaussData)) < 0.8
 # gaussData_train = gaussData[PU_idx]
@@ -170,19 +170,73 @@ def create_SVC(_C, data):
 
 ACC_table = []
 C_table = []
-# for i in range(1,900,1):
-#     dataSVC = create_SVC(i/30, gaussData)
-#     ACC_table.append(derivationsCM(CM(dataSVC)).ACC.values)
-#     C_table.append(i/30)
-# ACC_table = np.array(ACC_table)
+for i in range(1,200,1):
+    dataSVC = create_SVC(i/200, gaussData)
+    ACC_table.append(derivationsCM(CM(dataSVC)).ACC.values)
+    C_table.append(i/200)
+ACC_table = np.array(ACC_table)
 
-# plt.plot(C_table, ACC_table[:,0], drawstyle="steps-post")
-# plt.plot(C_table, ACC_table[:,1], drawstyle="steps-post")
-# plt.plot(C_table, ACC_table[:,2], drawstyle="steps-post")
-# plt.title("Accuracy depend on regularization parameter")
-# plt.xlabel("Regularization parameter [C]")
-# plt.ylabel("Accuracy")
-# plt.legend(["Class 1","Class 2", "Class 3"])
-# plt.savefig("img/svg_C2.png",dpi=150)
-# plt.show()
+plt.plot(C_table, ACC_table[:,0], drawstyle="steps-post")
+plt.plot(C_table, ACC_table[:,1], drawstyle="steps-post")
+plt.plot(C_table, ACC_table[:,2], drawstyle="steps-post")
+plt.title("Accuracy depend on regularization parameter")
+plt.xlabel("Regularization parameter [C]")
+plt.ylabel("Accuracy")
+plt.legend(["Class 1","Class 2", "Class 3"])
+plt.savefig("img/acc_c3.png",dpi=150)
+plt.show()
 
+
+
+## Create plot for SVM with margins
+def plot_SVC():
+    cls_col = ["#EC7063", "#A569BD", "#5DADE2", "#27AE60", "#F1C40F", "#E67E22"]
+    cls_col_dark = ["#922B21", "#76448A", "#2471A3", "#1E8449", "#B7950B", "#AF601A"]
+    cls_col_map = ["#f4aca4", "#d5b8e0", "#a8d3f0", "#acecc7", "#f9e79f", "f2bc8c"]
+    cmap = colors.ListedColormap([cls_col_map[x] for x in range(3)])
+    cmap_points = colors.ListedColormap([cls_col[x] for x in range(3)])
+    _C = 1.0
+    clf = SVC(C=_C, kernel="linear")
+    clf.fit(gaussData.loc[:,gaussData.columns != 'Class'].values, gaussData['Class'].values)
+
+
+    plt.figure(1, figsize=(8, 6))
+    plt.clf()
+
+    for i in range(3):
+        w = clf.coef_[i]
+        a = -w[0] / w[1]
+        xx = np.linspace(-6,6)
+        yy = a * xx - (clf.intercept_[i]) / w[1]
+        margin = 1 / np.sqrt(np.sum(clf.coef_[i] ** 2))
+        yy_down = yy - np.sqrt(1 + a ** 2) * margin
+        yy_up = yy + np.sqrt(1 + a ** 2) * margin
+        plt.plot(xx, yy, 'k-',zorder=i+1,linewidth=1)
+        plt.plot(xx, yy_down, 'k--',zorder=i+1,linewidth=1)
+        plt.plot(xx, yy_up, 'k--',zorder=i+1,linewidth=1)
+
+    nx, ny = 500, 500
+    x_min, x_max = plt.xlim()
+    y_min, y_max = plt.ylim()
+    xx, yy = np.meshgrid(np.linspace(x_min, x_max, nx), np.linspace(y_min, y_max, ny))
+    Z_cls = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z_cls = Z_cls.reshape(xx.shape)
+    plt.pcolormesh(xx, yy, Z_cls, cmap=cmap, zorder=0,alpha=0.8)
+    # plt.pcolormesh(xx, yy, Z_2, cmap=cmap,norm=colors.Normalize(vmax=max2, vmin=min2), zorder=1,alpha=0.2)
+    # plt.pcolormesh(xx, yy, Z_3, cmap=cmap,norm=colors.Normalize(vmax=max3, vmin=min3), zorder=2,alpha=0.2)
+
+    plt.scatter(clf.support_vectors_[:, 0], clf.support_vectors_[:, 1], s=80,
+                facecolors='none', zorder=10, edgecolors='k')
+    scatter = plt.scatter(gaussData.x.values, gaussData.y.values, c=gaussData.Class.values, zorder=5, cmap=cmap_points,
+                edgecolors='k')
+    plt.xlim(min(gaussData.x.values)-0.2, max(gaussData.x.values)+0.2)
+    plt.ylim(min(gaussData.y.values)-0.2, max(gaussData.y.values)+0.2)
+    plt.title("SVM Classivier with linear kernel")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.legend(*scatter.legend_elements(),title="Classes", loc="upper right")
+    plt.savefig("img/svc_cls.png",dpi=150)
+
+    plt.show()
+
+# print(gaussData.loc[gaussData['Class'] == 1, 'x'])
