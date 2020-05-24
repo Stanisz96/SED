@@ -3,7 +3,7 @@
 ## The content of the task
 List to do:
 * [x] Interpret animal characteristic data using function `clastermap()` from library _seaborn_,
-* [ ] Using _K-means_ method - recognize clasters in the _Iris_ dataset. Test all combinations for attributes.
+* [x] Using _K-means_ method - recognize clasters in the _Iris_ dataset. Test all combinations for attributes.
 
 ## Interpret animal characteristic data using function `heatmap()` from library _seaborn_
 Read data from _animal.csv_ file using _Pandas_ library. Loaded data are presented as below:
